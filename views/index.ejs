@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Admin Dasboard Perpustakaan</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="/img/user.png" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container">
+      <!-- Navbar brand -->
+      <a class="navbar-brand me-2" href="https://mdbgo.com/">
+        <img
+          src="img/user.png"
+          height="32"
+          alt="MDB Logo"
+          loading="lazy"
+          style="margin-top: -1px;"
+        />
+      </a>
+  
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarButtonsExample"
+        aria-controls="navbarButtonsExample"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Admin Dashboard</a>
+          </li>
+        </ul>
+        <!-- Left links -->
+  
+        <div class="d-flex align-items-center">
+          <button type="button" class="btn btn-success me-3 btn-sm btn-rounded text-light" data-mdb-toggle="modal" data-mdb-target="#AddModal">
+            <i class="fa-solid fa-plus"></i>
+            Add
+          </button>
+          <a
+            class="btn px-3"
+            style="background-color: #ad1bc7; color: #fff;"
+            href="https://www.instagram.com/bbaygx_/"
+            role="button"
+            ><i class="fa-brands fa-instagram fa-xl"></i></a>
+        </div>
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+
+    <!-- Start your project here-->
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th class="text-center">No</th>
+          <th class="text-center">Name</th>
+          <th class="text-center">Kepengarangan</th>
+          <th class="text-center">Penerbit</th>
+          <th class="text-center">ISBN</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let result of resultParse) { %>
+        <tr>
+            <td>
+                <p class="text-center"><%= result.id %></p>
+            </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="fw-normal mb-1"><%= result.name_books %></p>
+                <!-- <p class="text-muted mb-0">john.doe@gmail.com</p> -->
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1"><%= result.kepengarangan %></p>
+            <!-- <p class="text-muted mb-0">IT department</p> -->
+          </td>
+          <td>
+            <span class="badge badge-success rounded-pill d-inline"><%= result.penerbit %></span>
+          </td>
+          <td><%= result.isbn %></td>
+          <td>
+            <div class="d-flex">
+
+
+<!-- Modal -->
+<div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="AddModalLabel">Insert Data</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/tambah" method="post">
+                <!-- Name input -->
+                <div class="form-outline mb-4">
+                  <textarea type="text" id="name_books" name="name_books" class="form-control" ></textarea>
+                  <label class="form-label" for="name_books">Name</label>
+                </div>
+              
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <textarea type="text" name="kepengarangan" id="kepengarangan" class="form-control" ></textarea>
+                  <label class="form-label" for="kepengarangan">Kepengarangan</label>
+                </div>
+              
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                  <input class="form-control" type="text" name="penerbit" id="penerbit" rows="4"></input>
+                  <label class="form-label" for="penerbit">Penerbit</label>
+                </div>
+              
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                  <input class="form-control" type="text" name="isbn" id="isbn" rows="4"></input>
+                  <label class="form-label" for="isbn">ISBN</label>
+                </div>
+
+              
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+                <button type="button" class="btn btn-link btn-sm btn-rounded" data-mdb-toggle="modal" data-mdb-target="#EditModal">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    Edit
+                  </button>
+
+                  <!-- Modal -->
+<div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="EditModalLabel">Insert Data</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/edit" method="post">
+                <!-- Name input -->
+                <div class="form-outline mb-4">
+                  <textarea type="text" id="name_books" name="name_books" class="form-control" ><%= result.name_books %></textarea>
+                  <label class="form-label" for="name_books">Name</label>
+                </div>
+              
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <textarea type="text" name="kepengarangan" id="kepengarangan" class="form-control" ><%= result.kepengarangan %></textarea>
+                  <label class="form-label" for="kepengarangan">Kepengarangan</label>
+                </div>
+              
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                  <textarea class="form-control" type="text" name="penerbit" id="penerbit" ><%= result.penerbit %></textarea>
+                  <label class="form-label" for="penerbit">Penerbit</label>
+                </div>
+              
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                    <textarea class="form-control" type="text" name="penerbit" id="penerbit" ><%= result.isbn %></textarea>
+                  <label class="form-label" for="isbn">ISBN</label>
+                </div>
+
+              
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+                  
+
+                <button type="button" class="btn btn-link btn-sm btn-rounded text-danger">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Delete
+                  </button>
+            </div>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+  </body>
+</html>
