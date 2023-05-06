@@ -1,8 +1,6 @@
 # Perpustakaan-With-Express-JS
-Ini pertama kali gw make Express JS dan nyoba belajar server-side (backend)
 
-
-Untuk menjalankan websitenya pertama Buka 
+To run the website, first open it 
 
 >1. npm install -g nodemon *_// install nodemon_*
 >2. npm install --save-dev nodemon 
@@ -13,7 +11,8 @@ Untuk menjalankan websitenya pertama Buka
 default localhost: 
 >localhost:5000
 
-kalo mau ganti port localhost 
+
+If you want to change the localhost port
 
 <code>app.listen(5000, () => {
     console.log("server ready...")
