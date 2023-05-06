@@ -6,7 +6,8 @@ Untuk menjalankan websitenya pertama Buka
 
 >1. npm install -g nodemon *_// install nodemon_*
 >2. npm install --save-dev nodemon 
->3. npm run start 
+>3. npm install
+>4. npm run start
 
 
 default localhost: 
